@@ -1,0 +1,35 @@
+schema: agents24.rag/v1
+name: Customer Support Ingestion
+description: Ingests customer-support content into the managed knowledge store.
+mode: ingestion
+steps:
+  files:
+    uses: local_loader
+    with:
+      ingestion_type: one_shot
+  text:
+    uses: free_text
+  chunk:
+    uses: chunker
+    with:
+      strategy: recursive
+      chunk_size: 512
+      chunk_overlap: 50
+  embed:
+    uses: model_embedder
+    with:
+      model_id: $models.embedding
+  store:
+    uses: knowledge_store_sink
+    with:
+      knowledge_store_id: ../stores/knowledge.yaml
+      namespace: knowledge
+flow:
+  - from: files
+    to: chunk
+  - from: text
+    to: chunk
+  - from: chunk
+    to: embed
+  - from: embed
+    to: store

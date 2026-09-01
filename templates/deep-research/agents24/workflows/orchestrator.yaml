@@ -1,0 +1,16 @@
+schema: agents24.workflow/v1
+name: Deep Research Orchestrator
+description: Plans research, delegates focused sprints, and iterates against independent criticism.
+inputs:
+  text: string
+outputs:
+  response: string
+entry: orchestrator
+nodes:
+  orchestrator:
+    uses: ../agents/orchestrator.md
+    inputs:
+      - text
+flow:
+  - from: orchestrator.output_text
+    to: output.response

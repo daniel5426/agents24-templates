@@ -1,0 +1,10 @@
+schema: agents24.store/v1
+name: Customer Support Knowledge
+description: Managed knowledge for customer-support answers.
+embedding_model: $models.embedding
+chunking:
+  strategy: recursive
+  chunk_size: 512
+  chunk_overlap: 50
+retrieval_policy: semantic_only
+default_namespace: knowledge

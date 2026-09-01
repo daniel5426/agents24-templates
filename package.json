@@ -1,0 +1,16 @@
+{
+  "name": "agents24-templates",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.17.1",
+  "engines": {
+    "node": "^22.0.0 || ^24.0.0"
+  },
+  "scripts": {
+    "verify": "node scripts/verify.mjs",
+    "publish": "node scripts/publish.mjs"
+  },
+  "devDependencies": {
+    "@agents24/cli": "0.3.1"
+  }
+}

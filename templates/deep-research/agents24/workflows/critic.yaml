@@ -1,0 +1,19 @@
+schema: agents24.workflow/v1
+name: Research Critic
+description: Independently checks a proposed research answer for evidence, coverage, and unsupported claims.
+inputs:
+  submission: string
+outputs:
+  critique: string
+entry: critic
+nodes:
+  critic:
+    uses: ../agents/critic.md
+    inputs:
+      - submission
+flow:
+  - from: critic.output_text
+    to: output.critique
+tool:
+  name: Critique Research
+  description: Verify a proposed research result and identify concrete revisions before delivery.

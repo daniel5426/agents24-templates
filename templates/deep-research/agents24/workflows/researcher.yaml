@@ -1,0 +1,19 @@
+schema: agents24.workflow/v1
+name: Research Sprint
+description: Executes one focused research brief and returns evidence with source links.
+inputs:
+  brief: string
+outputs:
+  report: string
+entry: researcher
+nodes:
+  researcher:
+    uses: ../agents/researcher.md
+    inputs:
+      - brief
+flow:
+  - from: researcher.output_text
+    to: output.report
+tool:
+  name: Run Research Sprint
+  description: Research one focused brief using web sources and optional managed knowledge.

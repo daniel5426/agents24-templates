@@ -1,0 +1,13 @@
+{
+  "schema_version": "agents24.template/v1",
+  "id": "customer-support",
+  "version": "1.0.0",
+  "display_name": "Customer Support",
+  "description": "A customer-facing support Agent grounded in an optional managed knowledge base.",
+  "primary_resource_key": "support-agent",
+  "guidance_tags": ["existing-product", "customer-facing", "rag"],
+  "compatibility": {
+    "resource_package_schema": "2.0",
+    "min_generator_version": "0.2.0"
+  }
+}

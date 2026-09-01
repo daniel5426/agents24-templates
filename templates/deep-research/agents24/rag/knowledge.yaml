@@ -1,0 +1,39 @@
+schema: agents24.rag/v1
+name: Research Knowledge Retrieval
+description: Searches optional managed research knowledge.
+mode: retrieval
+inputs:
+  text: string
+outputs:
+  results: array
+steps:
+  query:
+    uses: query_input
+  embed:
+    uses: model_embedder
+    with:
+      model_id: $models.embedding
+  search:
+    uses: vector_search
+    with:
+      knowledge_store_id: ../stores/knowledge.yaml
+      top_k: 10
+  rerank:
+    uses: reranker
+    with:
+      strategy: lexical
+      top_k: 5
+  result:
+    uses: retrieval_result
+flow:
+  - from: query
+    to: embed
+  - from: embed
+    to: search
+  - from: search
+    to: rerank
+  - from: rerank
+    to: result
+tool:
+  name: Search Research Knowledge
+  description: Search optional managed knowledge for research evidence.

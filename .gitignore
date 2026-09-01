@@ -1,0 +1,5 @@
+node_modules/
+dist/
+*.agents24.zip
+.env
+.env.local

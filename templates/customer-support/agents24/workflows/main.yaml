@@ -1,0 +1,16 @@
+schema: agents24.workflow/v1
+name: Customer Support Agent
+description: Answers questions with an attached knowledge search tool.
+inputs:
+  text: string
+outputs:
+  response: string
+entry: assistant
+nodes:
+  assistant:
+    uses: ../agents/assistant.md
+    inputs:
+      - text
+flow:
+  - from: assistant.output_text
+    to: output.response

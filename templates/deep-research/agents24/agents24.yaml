@@ -1,0 +1,36 @@
+schema: agents24.package/v2
+package_id: pkg_22222222222222222222222222222222
+name: deep-research
+description: Iterative multi-Agent research with web and optional managed knowledge.
+resources:
+  - key: research-critic
+    path: workflows/critic.yaml
+  - key: research-ingestion
+    path: rag/ingestion.yaml
+  - key: research-orchestrator
+    path: workflows/orchestrator.yaml
+  - key: research-rag
+    path: rag/knowledge.yaml
+  - key: research-rag-instructions
+    path: skills/rag-retrieval.md
+  - key: research-sprint
+    path: workflows/researcher.yaml
+  - key: research-store
+    path: stores/knowledge.yaml
+requires:
+  models:
+    embedding:
+      required: true
+      capability: embedding
+      match:
+        canonical_key: openai/text-embedding-3-small
+    primary:
+      required: true
+      capability: chat
+      match:
+        canonical_key: openai/gpt-5.6-luna
+  toolsets:
+    web-research:
+      required: true
+      match:
+        name: Web Research
