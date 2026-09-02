@@ -12,7 +12,7 @@ if (!endpoint || !token || !/^[0-9a-f]{40}$/.test(commit) || !Number.isSafeInteg
 
 const body = new FormData();
 const entries = [];
-for (const template of templates()) {
+for (const template of templates().filter((item) => item.metadata.active)) {
   const { archive, sha256 } = packTemplate(template);
   entries.push({
     ...template.metadata,

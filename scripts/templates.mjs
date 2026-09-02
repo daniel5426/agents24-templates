@@ -14,6 +14,8 @@ export function templates() {
       const directory = join(templatesRoot, entry.name);
       const metadata = JSON.parse(readFileSync(join(directory, "template.yaml"), "utf8"));
       if (metadata.id !== entry.name) throw new Error(`${entry.name}: metadata id must match its directory`);
+      if (metadata.package_path !== "agents24") throw new Error(`${entry.name}: package_path must be agents24`);
+      if (typeof metadata.active !== "boolean") throw new Error(`${entry.name}: active must be boolean`);
       return { directory, metadata };
     })
     .sort((left, right) => left.metadata.id.localeCompare(right.metadata.id));
@@ -23,8 +25,9 @@ export function packTemplate(template) {
   const temporary = mkdtempSync(join(tmpdir(), "agents24-template-"));
   const output = join(temporary, `${template.metadata.id}.agents24.zip`);
   try {
-    execFileSync("pnpm", ["exec", "agents24", "package", "validate", join(template.directory, "agents24"), "--json"], { cwd: root, stdio: "pipe" });
-    execFileSync("pnpm", ["exec", "agents24", "package", "pack", join(template.directory, "agents24"), "--output", output, "--json"], { cwd: root, stdio: "pipe" });
+    const packageDirectory = join(template.directory, template.metadata.package_path);
+    execFileSync("pnpm", ["exec", "agents24", "package", "validate", packageDirectory, "--json"], { cwd: root, stdio: "pipe" });
+    execFileSync("pnpm", ["exec", "agents24", "package", "pack", packageDirectory, "--output", output, "--json"], { cwd: root, stdio: "pipe" });
     const archive = readFileSync(output);
     return { archive, sha256: createHash("sha256").update(archive).digest("hex") };
   } finally {
