@@ -9,22 +9,22 @@ importers:
   .:
     devDependencies:
       '@agents24/cli':
-        specifier: 0.3.1
-        version: 0.3.1
+        specifier: 0.3.27
+        version: 0.3.27
 
 packages:
 
-  '@agents24/cli@0.3.1':
-    resolution: {integrity: sha512-5Ql2Gg/KEH0l3s/CWt0T/dTkIqvnIqijiUBXQ922V811mX85rlldlu+9uSGDa4XXppniOvBMnG+nvo8ol4mLVA==}
+  '@agents24/cli@0.3.27':
+    resolution: {integrity: sha512-9VqusCjWSrsxrktwv7wdFMne35S39vtdJR4+MRS/9N/KPAo+Q2GtWUlK3s+3PzFygjB++iiExAMmjkQNYl+GKw==}
     engines: {node: '>=22'}
     hasBin: true
 
-  '@agents24/client@0.2.4':
-    resolution: {integrity: sha512-aJushiklQxsDdaApSvmfoctilXekX8VJNmGjYthXGyt1hVUG62GL5A6Qp3ee5FjnR+PbK3xv62lu2gvqdYyMwQ==}
+  '@agents24/client@0.2.16':
+    resolution: {integrity: sha512-R81pLva7wuR947a6MnQ7aWoWECVL0mUVCtGbbKN0av6I74tg9SqlDrVy4KWv4P7dbrU3DLJe0z62b71uI6Dz+w==}
     engines: {node: ^22.0.0 || ^24.0.0}
 
-  '@agents24/node@0.5.1':
-    resolution: {integrity: sha512-CUGYqfR01hXptPWa3Q9lpBnzIk5B2h01oajR+s9cN3V7TtUPB/m41IpivJ4lPr11c5rr4gSKzqW6nv9rvwbw5g==}
+  '@agents24/node@0.5.24':
+    resolution: {integrity: sha512-l2nhvNZsFklReirHSSdOZ/4kMpj8B255zHuHeB91Khh+wgyAPceKmBZjGp2/aL0W4ECnEa+YNwOlGL05LtQREg==}
     engines: {node: ^22.0.0 || ^24.0.0}
     peerDependencies:
       zod: ^4.0.0
@@ -75,20 +75,20 @@ packages:
 
 snapshots:
 
-  '@agents24/cli@0.3.1':
+  '@agents24/cli@0.3.27':
     dependencies:
-      '@agents24/node': 0.5.1
+      '@agents24/node': 0.5.24
       '@clack/prompts': 1.7.0
       ajv: 8.20.0
       yaml: 2.9.0
     transitivePeerDependencies:
       - zod
 
-  '@agents24/client@0.2.4': {}
+  '@agents24/client@0.2.16': {}
 
-  '@agents24/node@0.5.1':
+  '@agents24/node@0.5.24':
     dependencies:
-      '@agents24/client': 0.2.4
+      '@agents24/client': 0.2.16
 
   '@clack/core@1.4.3':
     dependencies:

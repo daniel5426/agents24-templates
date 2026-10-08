@@ -14,6 +14,3 @@ nodes:
 flow:
   - from: researcher.output_text
     to: output.report
-tool:
-  name: Run Research Sprint
-  description: Research one focused brief using web sources and optional managed knowledge.

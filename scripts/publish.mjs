@@ -12,7 +12,9 @@ if (!endpoint || !token || !/^[0-9a-f]{40}$/.test(commit) || !Number.isSafeInteg
 
 const body = new FormData();
 const entries = [];
-for (const template of templates().filter((item) => item.metadata.active)) {
+const active = templates().filter((item) => item.metadata.active);
+if (!active.length) throw new Error("No qualified active templates; refusing an empty catalog publication.");
+for (const template of active) {
   const { archive, sha256 } = packTemplate(template);
   entries.push({
     ...template.metadata,
