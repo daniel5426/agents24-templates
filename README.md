@@ -29,4 +29,4 @@ For unpublished platform contracts, run `pnpm dev:agents24 --smoke --verify-temp
 
 ## Coordinated platform train — 2026-10-08
 
-The verifier pins CLI 0.3.27 and candidates require generator 0.2.33. Customer Support ingestion uses `file_source → document_extract → structure chunking → embedding → indexing`; retired loaders and implicit mixed input routing are omitted. Candidates remain inactive until their existing runtime qualification requirements pass.
+The verifier pins CLI 0.3.27 and candidates require generator 0.2.33. Both template ingestion graphs use `file_source → document_extract → structure chunking → embedding → indexing`; retired loaders and implicit mixed input routing are omitted. Candidates remain inactive until their existing runtime qualification requirements pass.
