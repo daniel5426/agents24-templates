@@ -4,15 +4,16 @@ description: Ingests customer-support content into the managed knowledge store.
 mode: ingestion
 steps:
   files:
-    uses: local_loader
+    uses: file_source
     with:
-      ingestion_type: one_shot
-  text:
-    uses: free_text
+      ingestion_type: managed_file_batches
+      batch_size: 1
+  extract:
+    uses: document_extract
   chunk:
     uses: chunker
     with:
-      strategy: recursive
+      strategy: structure
       chunk_size: 512
       chunk_overlap: 50
   embed:
@@ -26,8 +27,8 @@ steps:
       namespace: knowledge
 flow:
   - from: files
-    to: chunk
-  - from: text
+    to: extract
+  - from: extract
     to: chunk
   - from: chunk
     to: embed

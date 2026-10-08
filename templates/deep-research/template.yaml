@@ -1,15 +1,20 @@
 {
   "schema_version": "agents24.template/v1",
   "id": "deep-research",
-  "version": "1.0.0",
-  "active": true,
+  "version": "1.1.0",
+  "active": false,
   "display_name": "Deep Research",
   "description": "A planner coordinating iterative web and knowledge research with an independent critic.",
   "primary_resource_key": "research-orchestrator",
-  "guidance_tags": ["new-agent-product", "research", "multi-agent", "rag"],
+  "guidance_tags": [
+    "new-agent-product",
+    "research",
+    "multi-agent",
+    "rag"
+  ],
   "package_path": "agents24",
   "compatibility": {
     "resource_package_schema": "2.0",
-    "min_generator_version": "0.2.0"
+    "min_generator_version": "0.2.33"
   }
 }
