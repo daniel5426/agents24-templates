@@ -14,6 +14,3 @@ nodes:
 flow:
   - from: critic.output_text
     to: output.critique
-tool:
-  name: Critique Research
-  description: Verify a proposed research result and identify concrete revisions before delivery.

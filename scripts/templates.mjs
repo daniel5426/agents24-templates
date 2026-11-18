@@ -21,13 +21,15 @@ export function templates() {
     .sort((left, right) => left.metadata.id.localeCompare(right.metadata.id));
 }
 
-export function packTemplate(template) {
+export function packTemplate(template, { cli } = {}) {
   const temporary = mkdtempSync(join(tmpdir(), "agents24-template-"));
   const output = join(temporary, `${template.metadata.id}.agents24.zip`);
   try {
     const packageDirectory = join(template.directory, template.metadata.package_path);
-    execFileSync("pnpm", ["exec", "agents24", "package", "validate", packageDirectory, "--json"], { cwd: root, stdio: "pipe" });
-    execFileSync("pnpm", ["exec", "agents24", "package", "pack", packageDirectory, "--output", output, "--json"], { cwd: root, stdio: "pipe" });
+    const command = cli ? process.execPath : "pnpm";
+    const prefix = cli ? [cli] : ["exec", "agents24"];
+    execFileSync(command, [...prefix, "package", "validate", packageDirectory, "--json"], { cwd: root, stdio: "pipe" });
+    execFileSync(command, [...prefix, "package", "pack", packageDirectory, "--output", output, "--json"], { cwd: root, stdio: "pipe" });
     const archive = readFileSync(output);
     return { archive, sha256: createHash("sha256").update(archive).digest("hex") };
   } finally {

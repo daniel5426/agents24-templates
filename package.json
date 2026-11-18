@@ -11,6 +11,6 @@
     "publish": "node scripts/publish.mjs"
   },
   "devDependencies": {
-    "@agents24/cli": "0.3.1"
+    "@agents24/cli": "0.3.27"
   }
 }
